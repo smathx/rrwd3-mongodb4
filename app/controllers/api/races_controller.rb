@@ -16,6 +16,9 @@ module Api
     def show
       if !request.accept || request.accept == "*/*"
         render plain: api_race_path(params[:id])
+      else
+        race = Race.find(params[:id])
+        render json: race
       end
     end
 
@@ -27,8 +30,34 @@ module Api
         else
           render plain: :nothing, status: :ok
         end
+      else
+        if !params[:race].nil?
+          Race.create(race_params)
+          render plain: race_params[:name], status: :created
+        end
       end
     end
+
+    # PUT,PATCH /api/races/:id
+    def update
+      #Rails.logger.debug("method=#{request.method}")
+      race = Race.find(params[:id])
+      race.update(race_params)
+      render json: race
+    end
+
+    # DELETE /api/races/:id
+    def destroy
+      race = Race.find(params[:id])
+      race.destroy
+      render :nothing=>true, :status=>:no_content
+    end
+
+    private
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def race_params
+        params.require(:race).permit(:name, :date)
+      end
 
   end
 end
