@@ -22,7 +22,11 @@ module Api
     # POST /api/races
     def create
       if !request.accept || request.accept == "*/*"
-        render plain: :nothing, status: :ok
+        if !params[:race].nil?
+          render plain: params[:race][:name]
+        else
+          render plain: :nothing, status: :ok
+        end
       end
     end
 
