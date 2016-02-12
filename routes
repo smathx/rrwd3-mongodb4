@@ -1,0 +1,33 @@
+              Prefix Verb   URI Pattern                                      Controller#Action
+    api_race_results GET    /api/races/:race_id/results(.:format)            api/results#index
+                     POST   /api/races/:race_id/results(.:format)            api/results#create
+ new_api_race_result GET    /api/races/:race_id/results/new(.:format)        api/results#new
+edit_api_race_result GET    /api/races/:race_id/results/:id/edit(.:format)   api/results#edit
+     api_race_result GET    /api/races/:race_id/results/:id(.:format)        api/results#show
+                     PATCH  /api/races/:race_id/results/:id(.:format)        api/results#update
+                     PUT    /api/races/:race_id/results/:id(.:format)        api/results#update
+                     DELETE /api/races/:race_id/results/:id(.:format)        api/results#destroy
+           api_races GET    /api/races(.:format)                             api/races#index
+                     POST   /api/races(.:format)                             api/races#create
+        new_api_race GET    /api/races/new(.:format)                         api/races#new
+       edit_api_race GET    /api/races/:id/edit(.:format)                    api/races#edit
+            api_race GET    /api/races/:id(.:format)                         api/races#show
+                     PATCH  /api/races/:id(.:format)                         api/races#update
+                     PUT    /api/races/:id(.:format)                         api/races#update
+                     DELETE /api/races/:id(.:format)                         api/races#destroy
+   api_racer_entries GET    /api/racers/:racer_id/entries(.:format)          api/entries#index
+                     POST   /api/racers/:racer_id/entries(.:format)          api/entries#create
+ new_api_racer_entry GET    /api/racers/:racer_id/entries/new(.:format)      api/entries#new
+edit_api_racer_entry GET    /api/racers/:racer_id/entries/:id/edit(.:format) api/entries#edit
+     api_racer_entry GET    /api/racers/:racer_id/entries/:id(.:format)      api/entries#show
+                     PATCH  /api/racers/:racer_id/entries/:id(.:format)      api/entries#update
+                     PUT    /api/racers/:racer_id/entries/:id(.:format)      api/entries#update
+                     DELETE /api/racers/:racer_id/entries/:id(.:format)      api/entries#destroy
+          api_racers GET    /api/racers(.:format)                            api/racers#index
+                     POST   /api/racers(.:format)                            api/racers#create
+       new_api_racer GET    /api/racers/new(.:format)                        api/racers#new
+      edit_api_racer GET    /api/racers/:id/edit(.:format)                   api/racers#edit
+           api_racer GET    /api/racers/:id(.:format)                        api/racers#show
+                     PATCH  /api/racers/:id(.:format)                        api/racers#update
+                     PUT    /api/racers/:id(.:format)                        api/racers#update
+                     DELETE /api/racers/:id(.:format)                        api/racers#destroy
