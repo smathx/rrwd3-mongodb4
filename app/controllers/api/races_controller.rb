@@ -53,6 +53,10 @@ module Api
       render :nothing=>true, :status=>:no_content
     end
 
+    rescue_from Mongoid::Errors::DocumentNotFound do |exception|
+      render plain: "woops: cannot find race[#{params[:id]}]", status: :not_found
+    end
+
     private
       # Never trust parameters from the scary internet, only allow the white list through.
       def race_params
