@@ -17,8 +17,8 @@ module Api
       if !request.accept || request.accept == "*/*"
         render plain: api_race_path(params[:id])
       else
-        race = Race.find(params[:id])
-        render json: race
+        @race = Race.find(params[:id])
+        render :show
       end
     end
 
@@ -54,7 +54,17 @@ module Api
     end
 
     rescue_from Mongoid::Errors::DocumentNotFound do |exception|
-      render plain: "woops: cannot find race[#{params[:id]}]", status: :not_found
+      #render plain: "woops: cannot find race[#{params[:id]}]", status: :not_found
+      render :status=>:not_found,
+        :template=>"api/races/error_msg",
+        :locals=>{ :msg=>"woops: cannot find race[#{params[:id]}]" }
+    end
+
+    rescue_from ActionView::MissingTemplate do |exception|
+      Rails.logger.debug exception
+      render plain: "woops: we do not support that content-type[#{request.accept}]",
+        :status=>:unsupported_media_type
+
     end
 
     private
